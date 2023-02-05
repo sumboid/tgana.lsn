@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "build": "rm -rf out && ls -ld build.clj && whoami && clojure -Sverbose -M build.clj",
+    "start": "npm run build && node out/main.js",
+    "pkg": "npm run build && pkg -t latest-linux -o ./dist/tglsnr out/main.js",
+    "pkg:alpine": "npm run build && pkg -t latest-alpine -o dist/tglsnr-alpine out/main.js"
+  },
+  "dependencies": {
+    "@cljs-oss/module-deps": "^1.1.1",
+    "dotenv": "^16.0.2",
+    "input": "^1.0.1",
+    "redis": "^4.6.4",
+    "telegram": "^2.11.5"
+  },
+  "devDependencies": {
+    "cjs-module-lexer": "^1.2.2",
+    "pkg": "^5.8.0"
+  }
+}

@@ -1,0 +1,12 @@
+.clj-kondo
+.cljs_node_repl
+.cpcache
+.lsp
+.calva
+node_modules
+out/
+.env
+
+dist/*
+!dist/.gitkeep
+target
