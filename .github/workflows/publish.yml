@@ -30,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ env.IMAGE_NAME }}:testing
+          tags: ghcr.io/${{ env.IMAGE_NAME }}:testing
