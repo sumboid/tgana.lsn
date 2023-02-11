@@ -8,9 +8,13 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  publish-latest-image:
+  publish-testing-image:
     name: Publish 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
