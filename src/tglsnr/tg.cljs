@@ -13,7 +13,7 @@
 (def PeerChannel (.-PeerChannel Api))
 
 (defn <tclient [api-id api-hash session rclient]
-  (let [tc (TelegramClient. (StringSession. session) api-id api-hash #js {:connectionRetries 5})]
+  (let [tc (TelegramClient. (StringSession. session) api-id api-hash #js {:connectionRetries 1 :autoReconnect false})]
     (go (<p! (.start tc #js {:onError #(.error js/console %)}))
         {:tclient tc
          :rclient rclient
@@ -41,7 +41,7 @@
     peer-id))
 
 (defn raw->msg [update]
-  (let [msg (if (= (.-className update) "Message")
+  (let [msg (if (contains? #{"Message" "MessageService"} (.-className update))
               update
               (.-message update))
         from (some-> msg (.-fromId) (.-userId) (.toString))
